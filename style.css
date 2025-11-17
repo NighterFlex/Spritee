@@ -1,8 +1,19 @@
+    @font-face {
+        font-family: 'PixelFont'; 
+        src: url('BoldPixels.ttf') format('truetype'); 
+        /* src: url('D:/Downloads/boldpixels/BoldPixels.ttf') format('woff'); */
+    }
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
+}
+
+body{
+    background-color: rgb(82, 117, 90);
 }
 
 .navbar{
@@ -30,7 +41,7 @@
     font-size: 20px;
     position: relative;
     cursor: pointer;
-    
+    font-weight:600;
 }
 
 .nav a{
@@ -59,10 +70,89 @@
 }
 
 .bgimg{
-background-image: url(bg.png);
-height: 100vh;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
+    background-image: url(bg.png);
+    height: 70vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+
+.draw-btn{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border: 3px solid #ea7226;
+    border-radius: 10px;
+    background-color: #ea7226;
+    box-shadow:  2px 2px #ea7226;
+}
+
+.draw-btn:hover{
+    border: 2px solid #ea7226;
+    box-shadow: 5px 5px #ea7226;
+}
+
+.draw-btn button{
+    font-family: 'PixelFont', sans-serif;
+    font-weight: bold;
+    padding: 15px 30px;
+    font-size: 24px;
+    color: white;
+    background-color: #ffc001;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    
+
+}
+
+
+.auth-btns {
+    margin-top: 5vh; 
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.auth {
+    font-family: 'PixelFont', sans-serif;
+    font-weight: bold;
+    padding: 15px 30px;
+    font-size: 24px;
+    
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 3px solid #ea7226;
+    background-color: #ffc001;
+    box-shadow: 2px 2px #ea7226;
+}
+
+.auth.register {
+    
+    background-color: white;
+    color: #ea7226
+}
+.auth.login {
+    color: white;
+    background-color: #ffc001;
+}
+
+.auth:hover {
+    border: 2px solid #ea7226;
+    box-shadow: 5px 5px #ea7226;
+}
+
+
+footer {
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
 }
