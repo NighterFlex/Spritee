@@ -185,7 +185,7 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    flex-direction: column;
+    /* flex-direction: column; */
 
 }
 
@@ -208,3 +208,25 @@ footer {
     box-shadow: 5px 5px #ea7226;
 }
 
+.container{
+    --size: 4;  
+    background-color: rgb(114, 113, 113);
+    /* width: 1000px;
+    height: 1000px; */
+        width: 90vmin;   
+    height: 90vmin; 
+    display: grid;
+    grid-template-columns: repeat(var(--size), 1fr);
+    grid-template-rows: repeat(var(--size), 1fr);
+    gap: 2px;
+    /* padding: 3px; */
+    margin: 0 auto;
+    /* position: relative; */
+
+    cursor: crosshair;
+    border: 5px solid black;
+}
+
+.box{
+    background-color: rgb(255, 255, 255);
+}
