@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Art Maker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 250px 1fr 250px;
+            gap: 20px;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .panel h2 {
+            margin-bottom: 15px;
+            color: #667eea;
+            font-size: 1.3em;
+        }
+
+        /* Tools Panel */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tool-btn {
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            background: #f5f5f5;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .tool-btn:hover {
+            background: #e8e8e8;
+            transform: translateY(-2px);
+        }
+
+        .tool-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        /* Color Picker */
+        .color-section {
+            margin-bottom: 20px;
+        }
+
+        #colorPicker {
+            width: 100%;
+            height: 50px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .palette {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .palette-color {
+            aspect-ratio: 1;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .palette-color:hover {
+            transform: scale(1.1);
+        }
+
+        .palette-color.selected {
+            border: 3px solid #667eea;
+            transform: scale(1.15);
+        }
+
+        /* Canvas Size */
+        .canvas-size {
+            margin-bottom: 20px;
+        }
+
+        #canvasSize {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        /* Canvas Container */
+        .canvas-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 600px;
+        }
+
+        #pixelCanvas {
+            display: grid;
+            gap: 1px;
+            background: #ddd;
+            border: 3px solid #333;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .pixel {
+            width: 20px;
+            height: 20px;
+            background: white;
+            cursor: crosshair;
+            transition: opacity 0.1s;
+        }
+
+        .pixel:hover {
+            opacity: 0.8;
+        }
+
+        /* Action Buttons */
+        .action-section {
+            margin-bottom: 15px;
+        }
+
+        .action-btn {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-danger {
+            background: #ff4757;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #ee3344;
+        }
+
+        /* Gallery */
+        .gallery {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .gallery-item {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .gallery-item:hover {
+            background: #e8e8e8;
+            transform: translateX(5px);
+        }
+
+        .gallery-preview {
+            width: 100%;
+            aspect-ratio: 1;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        .gallery-info {
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Pixel Art Maker</h1>
+        
+        <div class="main-content">
+            <!-- Left Panel: Tools & Colors -->
+            <div class="panel">
+                <h2>Tools</h2>
+                <div class="tools-grid">
+                    <button class="tool-btn active" data-tool="pencil">
+                        ✏️<br>Pencil
+                    </button>
+                    <button class="tool-btn" data-tool="eraser">
+                        🧹<br>Eraser
+                    </button>
+                    <button class="tool-btn" data-tool="fill">
+                        🪣<br>Fill
+                    </button>
+                    <button class="tool-btn" data-tool="eyedropper">
+                        💧<br>Pick Color
+                    </button>
+                </div>
+
+                <div class="color-section">
+                    <h2>Current Color</h2>
+                    <input type="color" id="colorPicker" value="#000000">
+                </div>
+
+                <div class="color-section">
+                    <h2>Palette</h2>
+                    <div class="palette" id="colorPalette"></div>
+                </div>
+
+                <div class="canvas-size">
+                    <h2>Canvas Size</h2>
+                    <select id="canvasSize">
+                        <option value="8,8">8x8 (Tiny)</option>
+                        <option value="16,16">16x16 (Small)</option>
+                        <option value="32,32" selected>32x32 (Medium)</option>
+                        <option value="16,32">16x32 (Portrait)</option>
+                        <option value="32,16">32x16 (Landscape)</option>
+                        <option value="64,64">64x64 (Large)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Center: Canvas -->
+            <div class="panel canvas-container">
+                <div id="pixelCanvas"></div>
+            </div>
+
+            <!-- Right Panel: Actions & Gallery -->
+            <div class="panel">
+                <h2>Actions</h2>
+                <div class="action-section">
+                    <button class="action-btn btn-secondary" onclick="undo()">↶ Undo</button>
+                    <button class="action-btn btn-secondary" onclick="redo()">↷ Redo</button>
+                    <button class="action-btn btn-primary" onclick="saveArtwork()">💾 Save</button>
+                    <button class="action-btn btn-primary" onclick="exportImage()">⬇️ Download PNG</button>
+                    <button class="action-btn btn-danger" onclick="clearCanvas()">🗑️ Clear Canvas</button>
+                </div>
+
+                <h2>Gallery</h2>
+                <div class="gallery" id="gallery"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State
+        let currentTool = 'pencil';
+        let currentColor = '#000000';
+        let isDrawing = false;
+        let grid = [];
+        let canvasWidth = 32;
+        let canvasHeight = 32;
+        let history = [];
+        let historyIndex = -1;
+
+        // Color palette
+        const colors = [
+            '#000000', '#FFFFFF', '#FF0000', '#00FF00', '#0000FF',
+            '#FFFF00', '#FF00FF', '#00FFFF', '#FFA500', '#800080',
+            '#008000', '#FFC0CB', '#A52A2A', '#808080', '#FFD700'
+        ];
+
+        // Initialize
+        function init() {
+            createColorPalette();
+            createCanvas();
+            loadGallery();
+            setupEventListeners();
+        }
+
+        // Create color palette
+        function createColorPalette() {
+            const palette = document.getElementById('colorPalette');
+            colors.forEach(color => {
+                const div = document.createElement('div');
+                div.className = 'palette-color';
+                div.style.backgroundColor = color;
+                div.onclick = () => selectColor(color, div);
+                palette.appendChild(div);
+            });
+        }
+
+        function selectColor(color, element) {
+            currentColor = color;
+            document.getElementById('colorPicker').value = color;
+            document.querySelectorAll('.palette-color').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        // Create canvas
+        function createCanvas() {
+            const canvas = document.getElementById('pixelCanvas');
+            canvas.innerHTML = '';
+            canvas.style.gridTemplateColumns = `repeat(${canvasWidth}, 20px)`;
+            
+            grid = [];
+            for (let i = 0; i < canvasHeight; i++) {
+                grid[i] = [];
+                for (let j = 0; j < canvasWidth; j++) {
+                    const pixel = document.createElement('div');
+                    pixel.className = 'pixel';
+                    pixel.dataset.row = i;
+                    pixel.dataset.col = j;
+                    
+                    pixel.addEventListener('mousedown', (e) => {
+                        isDrawing = true;
+                        paintPixel(i, j);
+                    });
+                    
+                    pixel.addEventListener('mouseenter', () => {
+                        if (isDrawing && (currentTool === 'pencil' || currentTool === 'eraser')) {
+                            paintPixel(i, j);
+                        }
+                    });
+                    
+                    canvas.appendChild(pixel);
+                    grid[i][j] = '#FFFFFF';
+                }
+            }
+            
+            addToHistory();
+        }
+
+        // Paint pixel
+        function paintPixel(row, col) {
+            const pixel = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+            
+            if (currentTool === 'pencil') {
+                pixel.style.backgroundColor = currentColor;
+                grid[row][col] = currentColor;
+            } else if (currentTool === 'eraser') {
+                pixel.style.backgroundColor = '#FFFFFF';
+                grid[row][col] = '#FFFFFF';
+            } else if (currentTool === 'eyedropper') {
+                const pickedColor = grid[row][col];
+                currentColor = pickedColor;
+                document.getElementById('colorPicker').value = pickedColor;
+                currentTool = 'pencil';
+                updateToolButtons();
+            } else if (currentTool === 'fill') {
+                const targetColor = grid[row][col];
+                if (targetColor !== currentColor) {
+                    floodFill(row, col, targetColor, currentColor);
+                }
+            }
+        }
+
+        // Flood fill algorithm
+        function floodFill(row, col, targetColor, fillColor) {
+            if (row < 0 || row >= canvasHeight || col < 0 || col >= canvasWidth) return;
+            if (grid[row][col] !== targetColor) return;
+            
+            grid[row][col] = fillColor;
+            const pixel = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+            pixel.style.backgroundColor = fillColor;
+            
+            floodFill(row + 1, col, targetColor, fillColor);
+            floodFill(row - 1, col, targetColor, fillColor);
+            floodFill(row, col + 1, targetColor, fillColor);
+            floodFill(row, col - 1, targetColor, fillColor);
+        }
+
+        // History management
+        function addToHistory() {
+            history = history.slice(0, historyIndex + 1);
+            history.push(JSON.parse(JSON.stringify(grid)));
+            historyIndex++;
+        }
+
+        function undo() {
+            if (historyIndex > 0) {
+                historyIndex--;
+                loadFromHistory();
+            }
+        }
+
+        function redo() {
+            if (historyIndex < history.length - 1) {
+                historyIndex++;
+                loadFromHistory();
+            }
+        }
+
+        function loadFromHistory() {
+            grid = JSON.parse(JSON.stringify(history[historyIndex]));
+            for (let i = 0; i < canvasHeight; i++) {
+                for (let j = 0; j < canvasWidth; j++) {
+                    const pixel = document.querySelector(`[data-row="${i}"][data-col="${j}"]`);
+                    pixel.style.backgroundColor = grid[i][j];
+                }
+            }
+        }
+
+        // Clear canvas
+        function clearCanvas() {
+            if (confirm('Clear the entire canvas?')) {
+                createCanvas();
+            }
+        }
+
+        // Save artwork
+        function saveArtwork() {
+            const artworks = JSON.parse(localStorage.getItem('pixelArtworks') || '[]');
+            const artwork = {
+                id: Date.now(),
+                grid: grid,
+                width: canvasWidth,
+                height: canvasHeight,
+                timestamp: new Date().toISOString()
+            };
+            artworks.push(artwork);
+            localStorage.setItem('pixelArtworks', JSON.stringify(artworks));
+            alert('Artwork saved!');
+            loadGallery();
+        }
+
+        // Load gallery
+        function loadGallery() {
+            const gallery = document.getElementById('gallery');
+            const artworks = JSON.parse(localStorage.getItem('pixelArtworks') || '[]');
+            
+            gallery.innerHTML = '';
+            
+            artworks.reverse().forEach(artwork => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                
+                const preview = document.createElement('canvas');
+                preview.className = 'gallery-preview';
+                preview.width = artwork.width * 5;
+                preview.height = artwork.height * 5;
+                const ctx = preview.getContext('2d');
+                
+                for (let i = 0; i < artwork.height; i++) {
+                    for (let j = 0; j < artwork.width; j++) {
+                        ctx.fillStyle = artwork.grid[i][j];
+                        ctx.fillRect(j * 5, i * 5, 5, 5);
+                    }
+                }
+                
+                const info = document.createElement('div');
+                info.className = 'gallery-info';
+                info.textContent = `${artwork.width}x${artwork.height} - ${new Date(artwork.timestamp).toLocaleString()}`;
+                
+                item.appendChild(preview);
+                item.appendChild(info);
+                item.onclick = () => loadArtwork(artwork);
+                
+                gallery.appendChild(item);
+            });
+        }
+
+        // Load artwork
+        function loadArtwork(artwork) {
+            if (confirm('Load this artwork? Current work will be lost.')) {
+                canvasWidth = artwork.width;
+                canvasHeight = artwork.height;
+                grid = artwork.grid;
+                createCanvas();
+                loadFromHistory();
+            }
+        }
+
+        // Export as PNG
+        function exportImage() {
+            const canvas = document.createElement('canvas');
+            const pixelSize = 10;
+            canvas.width = canvasWidth * pixelSize;
+            canvas.height = canvasHeight * pixelSize;
+            const ctx = canvas.getContext('2d');
+            
+            for (let i = 0; i < canvasHeight; i++) {
+                for (let j = 0; j < canvasWidth; j++) {
+                    ctx.fillStyle = grid[i][j];
+                    ctx.fillRect(j * pixelSize, i * pixelSize, pixelSize, pixelSize);
+                }
+            }
+            
+            const link = document.createElement('a');
+            link.download = 'pixel-art.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Event listeners
+        function setupEventListeners() {
+            // Tool selection
+            document.querySelectorAll('.tool-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentTool = btn.dataset.tool;
+                    updateToolButtons();
+                });
+            });
+
+            // Color picker
+            document.getElementById('colorPicker').addEventListener('input', (e) => {
+                currentColor = e.target.value;
+            });
+
+            // Canvas size change
+            document.getElementById('canvasSize').addEventListener('change', (e) => {
+                if (confirm('Change canvas size? Current work will be lost.')) {
+                    const [width, height] = e.target.value.split(',').map(Number);
+                    canvasWidth = width;
+                    canvasHeight = height;
+                    createCanvas();
+                }
+            });
+
+            // Mouse events
+            document.addEventListener('mouseup', () => {
+                if (isDrawing) {
+                    isDrawing = false;
+                    addToHistory();
+                }
+            });
+        }
+
+        function updateToolButtons() {
+            document.querySelectorAll('.tool-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.tool === currentTool);
+            });
+        }
+
+        // Start the app
+        init();
+    </script>
+</body>
+</html>
