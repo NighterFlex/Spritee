@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Register</title>
+    <link rel="stylesheet" href="signin.css">
+</head>
+
+<body>
+    <div class="page">
+        <div class="card">
+            <div class="card-inner" id="cardInner">
+                <!-- LOGIN (front) -->
+                <!-- LOGIN (front) -->
+                <div class="card-face card-front">
+                    <h1 class="logo">LOGIN</h1>
+                    <form class="form">
+                        <div class="loginput">
+
+                            <div class="field">
+                                <input type="text" placeholder="username" required>
+                            </div>
+                            <div class="field">
+                                <input type="password" placeholder="password" required>
+                            </div>
+                        </div>
+                            
+                            <!-- NEW: left section under inputs -->
+                            <div class="left-section">
+                            <div class="field-inline">
+                                <input type="checkbox" id="remember">
+                                <label for="remember">Remember me</label>
+                            </div>
+
+                            <button class="btn main-btn" type="submit">LOGIN</button>
+                        </div>
+
+                        <button class="btn link-btn" type="button" id="toRegister">
+                            Don’t have an account? Register
+                        </button>
+                    </form>
+                </div>
+
+                <!-- REGISTER (back) -->
+                <div class="card-face card-back">
+                    <h1 class="logoback">REGISTER</h1>
+                    <form class="form">
+                        <div class="field">
+                            <input type="text" placeholder="username" required>
+                        </div>
+                        <div class="field">
+                            <input type="email" placeholder="email" required>
+                        </div>
+                        <div class="field">
+                            <input type="password" placeholder="password" required>
+                        </div>
+                        <div class="field">
+                            <input type="password" placeholder="confirm password" required>
+                        </div>
+
+                        <div class="field state">
+                            <select required>
+                                    <option value="">select your country</option>
+                                    <option value="Japan">Japan</option>
+                                    <option value="Pakistan">Pakistan</option>
+                                    <option value="South Korea">South Korea</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="left-section">
+                                <div class="field-inline">
+                                    <span class="field-label">gender</span>
+                                    <label><input type="radio" name="gender" value="male"> Male</label>
+                                    <label><input type="radio" name="gender" value="female" checked> Female</label>
+                                </div>
+
+                            <button class="btn main-btn" type="submit">REGISTER</button>
+                        </div>
+
+                        <button class="btn link-btn" type="button" id="toLogin">
+                            Already have an account? Login
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const cardInner = document.getElementById('cardInner');
+        const toRegister = document.getElementById('toRegister');
+        const toLogin = document.getElementById('toLogin');
+
+        toRegister.addEventListener('click', () => {
+            cardInner.classList.add('flipped');
+        });
+
+        toLogin.addEventListener('click', () => {
+            cardInner.classList.remove('flipped');
+        });
+    </script>
+</body>
+
+</html>

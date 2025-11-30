@@ -3,58 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Register</title>
+    <link rel="stylesheet" href="register.css">
 </head>
 <body>
-    
+    <div class="regpage">
+        <div class="regcard">
+            <h1 id="reg-logo">REGISTER</h1>
+
+            <form class="reg-form">
+                <div class="field">
+                    <input type="text" name="name" placeholder="username" required>
+                </div>
+
+                <div class="field">
+                    <input type="email" name="email" placeholder="email" required>
+                </div>
+
+                <div class="field">
+                    <input type="password" name="password" placeholder="password" required>
+                </div>
+
+                <div class="field">
+                    <input type="password" name="cpassword" placeholder="confirm password" required>
+                </div>
+
+                
+                <div class="field state">
+                    <select name="country" required>
+                        <option value="">select your country</option>
+                        <option value="Japan">Japan</option>
+                        <option value="Pakistan">Pakistan</option>
+                        <option value="South Korea">South Korea</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="field field-inline">
+                    <span class="field-label">gender</span>
+                    <label>
+                        <input type="radio" name="gender" value="male">
+                        Male
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="female" checked>
+                        Female
+                    </label>
+                </div>
+
+                <button id="reg-btn">REGISTER</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Register</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-	<h1>Register</h1>
-	<form>
-		<label name = "username">Username: </label>
-        <br>
-		<input type="text" name = "name" required>
-		<br><br>
-        <label name = "email"> Email: </label>
-        <br>
-        <input type="email" name = "email" required>
-        <br><br>
-		<label name = "password">Password: </label>
-        <br>
- 		<input type="password" name = "password" required>
-        <br><br>
-        <label name = "cpassowrd" name = "cpassword">Confirm password: </label>
-        <br>
- 		<input type="password" name= "cpassword" required>
-		<br><br>
-        <label name = "gender">Gender:</label>
-        <br>
-        <input type="radio" name = "gender" value = "female" checked>
-        <label name = "gender">Female</label>
-        <input type="radio" name = "gender" value = "male">
-        <label name = "gender">Male</label>
-        <br><br>
-        <select name = "country">
-            <option>Select your country</option>
-            <option value = "Japan">Japan</option>
-            <option value = "Pakistan">Pakistan</option>
-            <option value = "South Korea">South Korea</option>
-            <option value = "Other">Other</option>
-        </select>
-        <br><br>
-		<button>REGISTER</button>
-	</form>
-</body>
-</html>
-

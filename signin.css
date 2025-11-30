@@ -1,0 +1,161 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(82, 117, 90);
+    font-family: sans-serif;
+}
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== Card + 3D flip ===== */
+.card {
+    width: 500px;
+    height: 500px;
+    perspective: 1200px;           /* important for 3D */
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+}
+
+/* flipped state */
+.card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+/* two faces */
+.card-face {
+    position: absolute;
+    inset: 0;
+    background-color: #ffffff;
+    border-radius: 10px;
+    color: rgb(82, 117, 90);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backface-visibility: hidden;
+}
+
+.card-back {
+    transform: rotateY(180deg);    /* register side */
+}
+
+/* ===== Shared layout inside faces ===== */
+.logo {
+    margin-top: 40px;
+    text-align: center;
+}
+
+/* form fills the card so we can push link to bottom */
+.form {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    flex: 1;                        /* take remaining height */
+}
+.loginput{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+/* inputs centered */
+.field {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* inputs / select style */
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="password"],
+.field select {
+    width: 300px;
+    font-size: 1.1rem;
+    padding: 4px 3px 1px;
+    border: none;
+    border-bottom: 2px solid rgb(82, 117, 90);
+    outline: none;
+    /* color: rgb(82, 117, 90); */
+    background: transparent;
+    box-sizing: border-box;
+}
+
+.field input::placeholder {
+    color: rgb(82, 117, 90);
+    opacity: 0.8;
+}
+
+.field select {
+    cursor: pointer;
+    color: rgb(82, 117, 90);
+}
+.left-section {
+    width: 100%;
+    max-width: 300px;               /* same as input width */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;        /* LEFT */
+    gap: 12px;
+    /* margin-top: 5px; */
+}
+
+.field-inline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.field-label {
+    text-transform: lowercase;
+}
+
+.field-inline input[type="checkbox"],
+.field-inline input[type="radio"] {
+    accent-color: rgb(82, 117, 90);
+}
+
+/* ===== Buttons ===== */
+.btn {
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* LOGIN / REGISTER main buttons */
+.main-btn {
+    width: 120px;
+    height: 35px;
+    margin-top: 20px;
+    background-color: rgb(82, 117, 90);
+    color: #ffffff;
+}
+
+.main-btn:hover {
+    background-color: rgb(52, 75, 58);
+}
+
+/* switch links – SAME POSITION BOTTOM ON BOTH SIDES */
+.link-btn {
+    background: transparent;
+    color: rgb(82, 117, 90);
+    font-size: 0.85rem;
+    text-decoration: underline;
+    margin-top: auto;
+    margin-bottom: 30px;
+    align-self: center;
+}
