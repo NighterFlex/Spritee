@@ -166,6 +166,8 @@ body{
         background-color: #ffc001;
         box-shadow: 2px 2px #ea7226;
         color: white;
+        text-decoration: none; 
+        text-align: center;
     }
     
     .btn:hover {
@@ -275,7 +277,7 @@ body{
     .tools-grid{
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 2px;
+        gap: 4px;
         align-items: center;
         padding: 10px;
         justify-content: center;
@@ -304,4 +306,8 @@ body{
         text-align: center;
         padding-bottom: 20px;
     }
-    
+    /* .btn a{
+        text-decoration: none;
+        
+         display: inline-block;
+    } */
