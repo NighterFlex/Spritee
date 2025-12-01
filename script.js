@@ -1,7 +1,7 @@
 const container = document.querySelector(".container");
 const sizeElement = document.querySelector(".size");
 const color = document.querySelector(".color-picker");
-const resetButton = document.querySelector(".reset-btn");
+const resetButton = document.querySelector("#reset-btn");
 
 let draw = false;
 
