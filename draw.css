@@ -147,47 +147,17 @@ body{
         /* background-color: #76b6cb; */
         /* margin-bottom: 200px; */
         /* padding: 20px; */
-        padding: 3px 200px;
+        padding: 3px 180px;
         margin: 20px auto;
         align-items: center;
         /* position: relative; */
     }
 
-    .actions{
-        width: 200px;
-        padding: 190px 30px;
-        background-color: rgb(200, 200, 200);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        border-radius: 10px;
-        margin: 0px;
-        height: fit-content;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    
-    }
- 
-.options{
-        width: 200px;
-        padding: 200px 30px ;
-        background-color: rgb(200, 200, 200);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        border-radius: 10px;
-        height: fit-content;
-        margin: 0px;
-        /* margin-bottom: 20px; */
-        display: flex;
-        justify-content: center;
-        /* align-items: center; */
-        gap: 20px;
-        flex-direction: column;
-        
-    }
     
     .btn{
         font-family: 'PixelFont', sans-serif;
         font-weight: bold;
-        padding: 10px 20px;
+        padding: 10px 10px;
         font-size: 18px;
         border: none;
         cursor: pointer;
@@ -205,11 +175,19 @@ body{
 
     .color-picker{
         width: 100%;
-        height: 40px;
+        height: 60px;
         border: none;
         cursor: pointer;
         padding: 4px;
         border-radius: 7px;
+    }
+    .size{
+        font-family: "PixelFont", sans-serif;;
+        width: 100%;
+        padding: 10px;
+        font-size: 20px;
+        border-radius: 7px;
+        border: 2px solid rgb(187, 180, 180);
     }
     
     .container{
@@ -244,9 +222,86 @@ body{
         margin: auto;
         padding:20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        border-radius: 15px;
-        
+        border-radius: 15px; 
+    }
+
+.tools{
+        width: 250px;
+        padding: 20px 30px ;
+        background-color: rgb(200, 200, 200);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        height: fit-content;
+        margin: 0px;
+        /* margin-bottom: 20px; */
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        gap: 20px;
+        flex-direction: column;
         
     }
 
+    #tools-heading{
+        font-family: "PixelFont", sans-serif;
+        color: rgb(82, 117, 90);
+        text-align: center;
+    }
+
+    .tool-btn{
+        font-family: 'PixelFont', sans-serif;
+        font-weight: bold;
+        padding: 2px 33px;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        border: 2px solid rgb(187, 180, 180);
+        box-shadow: 5px 5px rgb(200, 200, 200);
+        background-color: rgb(82, 117, 90);
+        
+        color: white;
+    }
+    .tool-btn:hover {
  
+        border: 3px solid rgb(200, 200, 200);
+        box-shadow: 2px 2px rgb(82, 117, 90);
+    }
+    .tool-btn.active{
+        border: 3px solid rgb(200, 200, 200);
+        box-shadow: 2px 2px rgb(82, 117, 90);
+        background-color: rgb(105, 103, 103);
+    }
+    .tools-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+        align-items: center;
+        padding: 10px;
+        justify-content: center;
+        margin-bottom: 4px;   
+    }
+
+    
+.actions{
+        width: 250px;
+        padding: 20px 30px;
+        background-color: rgb(200, 200, 200);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        margin: 0px;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding-bottom: 70px;
+    
+    }
+ 
+    #actions-heading{
+        font-family: "PixelFont", sans-serif;
+        color: rgb(82, 117, 90);
+        text-align: center;
+        padding-bottom: 20px;
+    }
+    
