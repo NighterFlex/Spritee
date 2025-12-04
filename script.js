@@ -2,9 +2,11 @@ const container = document.querySelector(".container");
 const sizeElement = document.querySelector(".size");
 const color = document.querySelector(".color-picker");
 const resetButton = document.querySelector("#reset-btn");
+const penBtn = document.querySelector("#pen-btn");
+const eraserBtn = document.querySelector("#eraser-btn");
 
+let currentTool = "pen";   //by defaultt
 let draw = false;
-
 let size = sizeElement.value;
 
 function createGrid() {
@@ -23,15 +25,24 @@ function createGrid() {
 
 createGrid();   
 
+function drawPixel(div){
+    if(currentTool === "pen"){
+        div.style.backgroundColor = color.value;
+    }
+    else if(currentTool === "eraser"){
+        div.style.backgroundColor = "white";
+    }
+}
+
+
 
 function onMouseOver(div) {
     if(!draw)
         return;
-
-    div.style.backgroundColor = color.value;
+    drawPixel(div);
 }
 function onMouseDown(div) {
-    div.style.backgroundColor = color.value;
+    drawPixel(div);
 }
 
 window.addEventListener("mousedown", function(){
@@ -53,5 +64,18 @@ sizeElement.addEventListener("keyup", function(){
     size = sizeElement.value;
     reset();
 });
+
+penBtn.addEventListener("click", function() {
+    currentTool = "pen";
+    penBtn.classList.add("active");
+    eraserBtn.classList.remove("active");
+});
+
+eraserBtn.addEventListener("click", function(){
+    currentTool = "eraser";
+    eraserBtn.classList.add("active");
+    penBtn.classList.remove("active");
+});
+
 
 // sizeElement.addEventListener("change", function()

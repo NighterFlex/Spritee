@@ -268,6 +268,7 @@ body{
  
         border: 3px solid rgb(200, 200, 200);
         box-shadow: 2px 2px rgb(82, 117, 90);
+        background-color: rgb(98, 122, 104);
     }
     .tool-btn.active{
         border: 3px solid rgb(200, 200, 200);
