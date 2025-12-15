@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="navbar">
-    <a href="index.html"><img src="images/image.png" alt="logo" class="logo">  </a>  
+    <a href="index.php"><img src="images/image.png" alt="logo" class="logo">  </a>  
     <img id="menubar" src="images/menubar.png" alt="">
         <div class="navback">
             <img id="crossicon" src="images/cross.png" alt="">
@@ -17,7 +17,7 @@
                     <a href="#"><li>Home</li></a>
                     <a href="draw.html"><li>Draw</li></a>
                     <a href="https://github.com/NighterFlex/Spritee" target="_blank"><li>Github</li></a>
-                    <a href="signin.html"><li>Login</li></a>
+                    <a href="signin.php"><li>Login</li></a>
                 </ul>
             </nav>
         </div>    
@@ -26,6 +26,7 @@
 
     <div class="bgimg">
         <!-- <img src="bg.png" alt="bg" > -->
+         <!-- <img src="images/bg.png" alt="bg" style="width: 100%; height: 70vh; object-fit: cover;"> -->
     </div>
 
 

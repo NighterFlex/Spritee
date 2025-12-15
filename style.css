@@ -90,7 +90,7 @@ body{
 }
 
 .bgimg{
-    background-image: url(/images/bg.png);
+    background-image: url(images/bg.png);
     height: 70vh;
     background-size: cover;
     background-position: center;
