@@ -22,10 +22,10 @@ session_start();
         <nav class="nav1">
             <ul class="nav">
 
-                <a href="#">
+                <a href="index.php">
                     <li>Home</li>
                 </a>
-                <a href="draw.html">
+                <a href="draw.php">
                     <li>Draw</li>
                 </a>
                 <a href="https://github.com/NighterFlex/Spritee" target="_blank">
