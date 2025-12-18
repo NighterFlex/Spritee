@@ -79,3 +79,24 @@ eraserBtn.addEventListener("click", function(){
 
 
 // sizeElement.addEventListener("change", function()
+
+//save functionality
+const downloadBtn = document.getElementById("download-btn");
+const containerPanel = document.querySelector(".container-panel");
+
+downloadBtn.addEventListener("click", function() {
+    html2canvas(containerPanel).then(canvas => {
+        // Convert canvas to data URL
+        const imgData = canvas.toDataURL("image/png");
+
+        // Create a temporary link to download
+        const link = document.createElement("a");
+        link.href = imgData;
+        link.download = "my_pixel_art.png";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        alert("Your pixel art has been saved!");
+    });
+});

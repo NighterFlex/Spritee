@@ -3,17 +3,17 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spritee</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Draw</title>
+    <link rel="stylesheet" href="draw.css">
+
 </head>
 
-<body>
+    <canvas id="export-canvas" style="display:none;"></canvas>
 
-    <!-- NAVBAR -->
+<body>
     <div class="navbar">
         <a href="index.php">
             <img src="images/image.png" alt="logo" class="logo">
@@ -25,7 +25,7 @@ session_start();
                 <a href="#">
                     <li>Home</li>
                 </a>
-                <a href="draw.php">
+                <a href="draw.html">
                     <li>Draw</li>
                 </a>
                 <a href="https://github.com/NighterFlex/Spritee" target="_blank">
@@ -54,34 +54,40 @@ session_start();
         </nav>
     </div>
 
-    <!-- HERO SECTION -->
-    <div class="bgimg"></div>
 
-    <div class="draw-btn">
-        <?php if (isset($_SESSION['logged_in'])): ?>
-            <a href="draw.php"><button>DRAW</button></a>
-        <?php else: ?>
-            <a href="signin.php" ><button id="drawBtn">DRAW</button></a>
-        <?php endif; ?>
+
+    <div class="panel">
+        <div class="tools">
+            <h1 id="tools-heading">Tools</h1>
+            <div class="tools-grid">
+                <button id="pen-btn" class="tool-btn active">✎ Pen</button>
+                <button id="eraser-btn" class="tool-btn">🗑 Eraser</button>
+            </div>
+            <button id="reset-btn" class="btn">⟳ Reset</button>
+            <input type="color" value="#fffff" class="color-picker">
+            <input type="number" value="20" class="size">
+        </div>
+    <div class="container-panel">
+        <div class="container">
+            <!-- <div class="box"></div>
+            <div class="box"></div> -->
+        </div>
     </div>
 
-
-    <!-- AUTH BUTTONS (HIDE WHEN LOGGED IN) -->
-    <?php if (!isset($_SESSION['logged_in'])): ?>
-        <div class="auth-btns">
-            <a href="signin.php"><button class="auth login">LOGIN</button></a>
-            <a href="signin.php"><button class="auth register">REGISTER</button></a>
+        <div class="actions">
+            <h1 id="actions-heading">Actions</h1>
+            <button class="btn" id="save-btn">⎙ Save</button>
+            <button class="btn" id="download-btn">⬇ Download</button>
+            <a href="gallery.html" target="_blank" class="btn">[◉°] Gallery</a>
         </div>
-    <?php endif; ?>
 
-    <footer>
-        <p id="welcome-paragraph">Welcome to <b id="msg-spritee">SpRITEE</b>! Probably the most fun and intriguing websites out there. What's it about? Welllll, It's just a little pixel-art maker! A place where one can draw ANYTHING pixelated. I tried to keep it as interactive as possible. Hope you enjoy!!!! :3</p>
-        </p>
-        <p id="copyright">© 2024 Spritee. All rights reserved.</p>
-    </footer>
 
+    </div>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src = "script.js"></script>
     <script>
-        <?php if (!isset($_SESSION['logged_in'])): ?>
+         <?php if (!isset($_SESSION['logged_in'])): ?>
             const drawBtn = document.getElementById('drawBtn');
 
             drawBtn.addEventListener('click', function(e) {
@@ -108,7 +114,5 @@ session_start();
         });
     </script>
 
-
 </body>
-
 </html>

@@ -79,7 +79,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['log-btn']) ){
         $_SESSION['logged_in'] = true;
 
         if($remember){
-            setcookie('username', $username, time() + (5*24*60*60), "/");
+            setcookie('username', $login_username, time() + (5*24*60*60), "/");
         }
         header("Location: index.php");
         exit();

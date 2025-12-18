@@ -96,6 +96,44 @@ body{
     margin-top: 15px;
 }
 
+/* USER DROPDOWN */
+.user-menu {
+    position: relative;
+}
+
+.username {
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+.dropdown {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    display: none;
+    background-color: #fefefe;
+    border-radius: 8px;
+    min-width: 160px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    z-index: 2000;
+}
+
+
+.dropdown a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: rgb(82, 117, 90);
+    font-weight: bold;
+}
+
+.dropdown a:hover {
+    background-color: rgb(82, 117, 90);
+    color: white;
+}
  
     @media (max-width: 900px) {
         .navbar{
