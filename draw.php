@@ -3,6 +3,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,7 @@ session_start();
 
 </head>
 
-    <canvas id="export-canvas" style="display:none;"></canvas>
+<canvas id="export-canvas" style="display:none;"></canvas>
 
 <body>
     <div class="navbar">
@@ -25,9 +26,16 @@ session_start();
                 <a href="index.php">
                     <li>Home</li>
                 </a>
-                <a href="draw.php">
-                    <li>Draw</li>
-                </a>
+                <?php if (isset($_SESSION['logged_in'])): ?>
+                    <a href="draw.php">
+                        <li>Draw</li>
+                    </a>
+                <?php else: ?>
+                    <a href="signin.php" id="navDraw">
+                        <li>Draw</li>
+                    </a>
+                <?php endif; ?>
+
                 <a href="https://github.com/NighterFlex/Spritee" target="_blank">
                     <li>Github</li>
                 </a>
@@ -67,12 +75,12 @@ session_start();
             <input type="color" value="#fffff" class="color-picker">
             <input type="number" value="20" class="size">
         </div>
-    <div class="container-panel">
-        <div class="container">
-            <!-- <div class="box"></div>
+        <div class="container-panel">
+            <div class="container">
+                <!-- <div class="box"></div>
             <div class="box"></div> -->
+            </div>
         </div>
-    </div>
 
         <div class="actions">
             <h1 id="actions-heading">Actions</h1>
@@ -83,19 +91,25 @@ session_start();
 
 
     </div>
-   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src = "script.js"></script>
-    <script>
-         <?php if (!isset($_SESSION['logged_in'])): ?>
-            const drawBtn = document.getElementById('drawBtn');
 
-            drawBtn.addEventListener('click', function(e) {
-                e.preventDefault(); // stop default link behavior
-                alert('Sign in to draw!'); // show alert message
-                window.location.href = 'signin.php'; // redirect to sign-in page
-            });
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        //alert shown when navdraw is click
+        <?php if (!isset($_SESSION['logged_in'])): ?>
+            const navDraw = document.getElementById('navDraw');
+
+            if (navDraw) {
+                navDraw.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('Sign in to draw!');
+                    window.location.href = 'signin.php';
+                });
+            }
         <?php endif; ?>
+
+        // dropmenu shown
         document.addEventListener('DOMContentLoaded', () => {
             const userMenu = document.querySelector('.user-menu');
             const dropdown = document.querySelector('.user-menu .dropdown');
@@ -115,4 +129,5 @@ session_start();
     </script>
 
 </body>
+
 </html>

@@ -25,9 +25,16 @@ session_start();
                 <a href="#">
                     <li>Home</li>
                 </a>
-                <a href="draw.php">
-                    <li>Draw</li>
-                </a>
+                <?php if (isset($_SESSION['logged_in'])): ?>
+                    <a href="draw.php">
+                        <li>Draw</li>
+                    </a>
+                <?php else: ?>
+                    <a href="signin.php" id="navDraw">
+                        <li>Draw</li>
+                    </a>
+                <?php endif; ?>
+
                 <a href="https://github.com/NighterFlex/Spritee" target="_blank">
                     <li>Github</li>
                 </a>
@@ -61,7 +68,7 @@ session_start();
         <?php if (isset($_SESSION['logged_in'])): ?>
             <a href="draw.php"><button>DRAW</button></a>
         <?php else: ?>
-            <a href="signin.php" ><button id="drawBtn">DRAW</button></a>
+            <a href="signin.php"><button id="drawBtn">DRAW</button></a>
         <?php endif; ?>
     </div>
 
@@ -90,22 +97,36 @@ session_start();
                 window.location.href = 'signin.php'; // redirect to sign-in page
             });
         <?php endif; ?>
-        document.addEventListener('DOMContentLoaded', () => {
-            const userMenu = document.querySelector('.user-menu');
-            const dropdown = document.querySelector('.user-menu .dropdown');
 
-            if (userMenu) {
-                userMenu.addEventListener('click', (e) => {
-                    e.stopPropagation(); // prevent click from closing immediately
-                    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-                });
+            <?php if (!isset($_SESSION['logged_in'])): ?>
+        const navDraw = document.getElementById('navDraw');
 
-                // Close dropdown if clicking outside
-                document.addEventListener('click', () => {
-                    dropdown.style.display = 'none';
-                });
-            }
-        });
+        if (navDraw) {
+            navDraw.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Sign in to draw!');
+                window.location.href = 'signin.php';
+            });
+        }
+        <?php endif; ?>
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const userMenu = document.querySelector('.user-menu');
+    const dropdown = document.querySelector('.user-menu .dropdown');
+
+    if (userMenu) {
+    userMenu.addEventListener('click', (e) => {
+    e.stopPropagation(); // prevent click from closing immediately
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Close dropdown if clicking outside
+    document.addEventListener('click', () => {
+    dropdown.style.display = 'none';
+    });
+    }
+    });
     </script>
 
 
