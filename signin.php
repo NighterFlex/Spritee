@@ -111,6 +111,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['log-btn']) ){
 </head>
 
 <body>
+        <a href="index.php">
+            <img src="images/image.png" alt="logo" class="logo" style="height: 60px; margin: 10px 0;">
+        </a>
+    </div>
     <div class="page">
         <div class="card">
             <div class="card-inner" id="cardInner">
