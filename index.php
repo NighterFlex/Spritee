@@ -18,50 +18,54 @@ session_start();
         <a href="index.php">
             <img src="images/image.png" alt="logo" class="logo">
         </a>
-
-        <nav class="nav1">
-            <ul class="nav">
-
-                <a href="#">
-                    <li>Home</li>
-                </a>
-                <?php if (isset($_SESSION['logged_in'])): ?>
-                    <a href="draw.php">
-                        <li>Draw</li>
+        <img id="menubar" src="images/menubar.png" alt="">
+        <div class="navback">
+             <img id="crossicon" src="images/cross.png" alt="">
+            <nav class="nav1">
+                <ul class="nav">
+                    
+                    <a href="#">
+                        <li>Home</li>
                     </a>
-                <?php else: ?>
-                    <a href="signin.php" id="navDraw">
-                        <li>Draw</li>
-                    </a>
-                <?php endif; ?>
-
-                <a href="https://github.com/NighterFlex/Spritee" target="_blank">
-                    <li>Github</li>
-                </a>
-
-                <!-- LOGIN / USER MENU -->
-                <?php if (isset($_SESSION['logged_in'])): ?>
-                    <li class="user-menu">
-                        <span class="username">
-                            <?php echo htmlspecialchars($_SESSION['username']); ?>
-                        </span>
-
-                        <div class="dropdown">
-                            <!-- <a href="#">Extra Button</a> -->
-                            <a href="logout.php">Logout</a>
-                        </div>
-                    </li>
-                <?php else: ?>
-                    <a href="signin.php">
-                        <li>Login</li>
-                    </a>
-                <?php endif; ?>
-
-            </ul>
-        </nav>
+                    <?php if (isset($_SESSION['logged_in'])): ?>
+                        <a href="draw.php">
+                            <li>Draw</li>
+                        </a>
+                        <?php else: ?>
+                            <a href="signin.php" id="navDraw">
+                                <li>Draw</li>
+                            </a>
+                            <?php endif; ?>
+                            
+                            <a href="https://github.com/NighterFlex/Spritee" target="_blank">
+                                <li>Github</li>
+                            </a>
+                            
+                            <!-- LOGIN / USER MENU -->
+                            <?php if (isset($_SESSION['logged_in'])): ?>
+                                <li class="user-menu">
+                                    <span class="username">
+                                        <?php echo htmlspecialchars($_SESSION['username']); ?>
+                                    </span>
+                                    
+                                    <div class="dropdown">
+                                        <!-- <a href="#">Extra Button</a> -->
+                                        <a href="logout.php">Logout</a>
+                                    </div>
+                                </li>
+                                <?php else: ?>
+                                    <a href="signin.php">
+                                        <li>Login</li>
+                                    </a>
+                                    <?php endif; ?>
+                                    
+                                </ul>
+                            </nav>
+            </div>
     </div>
 
     <!-- HERO SECTION -->
+     <div class="extra"></div>
     <div class="bgimg"></div>
 
     <div class="draw-btn">
@@ -128,7 +132,7 @@ session_start();
     }
     });
     </script>
-
+    <script src="home.js"></script>
 
 </body>
 

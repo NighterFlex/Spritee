@@ -84,8 +84,8 @@ session_start();
 
         <div class="actions">
             <h1 id="actions-heading">Actions</h1>
-            <button class="btn" id="save-btn">⎙ Save</button>
             <button class="btn" id="download-btn">⬇ Download</button>
+            <button class="btn" id="save-btn">⎙ Save</button>
             <a href="gallery.html" target="_blank" class="btn">[◉°] Gallery</a>
         </div>
 
