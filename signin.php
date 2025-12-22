@@ -75,6 +75,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['log-btn']) ){
         echo "<script>
             alert('Login successful! Welcome $login_username');
         </script>";
+        $user = mysqli_fetch_assoc($login_result);
+        $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $login_username;
         $_SESSION['logged_in'] = true;
 

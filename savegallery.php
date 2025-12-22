@@ -1,29 +1,26 @@
 <?php
-
 session_start();
 include 'connect.php';
 
+if (!isset($_SESSION['user_id'])) {
+    echo json_encode(['success' => false, 'message' => 'Not logged in']);
+    exit;
+}
 
 $data = json_decode(file_get_contents('php://input'), true);
 
 $user_id = $_SESSION['user_id'];
-$art_name = isset($data['art_name']) ? trim($data['art_name']) : 'Untitled';
+$art_name = trim($data['art_name'] ?? 'Untitled');
 $image_data = $data['image_data'];
 
+$sql = "INSERT INTO gallery (user_id, art_name, image_data)
+        VALUES (?, ?, ?)";
 
-$save_art_sql = "INSERT INTO gallery (user_id, art_name, image_data) VALUES ('$user_id', '$art_name', '$image_data')";
-$result = mysqli_query($conn, $save_art_sql);
-// if ($result) {
-//     // echo "<script>
-//     //     alert('Artwork saved to gallery successfully! :3');
-//     //     console.log('YAYAYAYAYAYAYAAYYAY');
-//     // </script>";
-// } else {
-//     echo "<script>
-//         alert('Failed to save artwork. Please try again. :(');
-//         console.log('NOOOOOOOOOOOO');
-//     </script>";
-// }
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "iss", $user_id, $art_name, $image_data);
 
-
-?>
+if (mysqli_stmt_execute($stmt)) {
+    echo json_encode(['success' => true]);
+} else {
+    echo json_encode(['success' => false, 'message' => 'DB insert failed']);
+}

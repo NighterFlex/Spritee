@@ -102,58 +102,55 @@ downloadBtn.addEventListener("click", function() {
 });
 
 //gallery functionality
-const saveGalleryBtn = document.getElementById("save-btn");
+document.getElementById('save-btn').addEventListener('click', () => {
+    html2canvas(document.querySelector('.container')).then(canvas => {
+        const imageData = canvas.toDataURL('image/png');
 
-saveGalleryBtn.addEventListener("click", function() {
-    html2canvas(containerPanel).then(canvas => {
-        const image_data = canvas.toDataURL("image/png");
-        const art_name = prompt("Enter a name for your artwork:", "Untitled");
-        if (art_name === null) {
-            return; // user cancelled the prompt
-        }
-        // Send the image data and art name to the server
         fetch('savegallery.php', {
             method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                image: image_data,
-                name: art_name
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(response => {
-            if (response.ok) {
-                alert("Artwork saved to gallery!");
+                art_name: 'My Art',
+                image_data: imageData
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                alert('Artwork saved!');
+                loadGallery(); // 🔥 THIS IS IMPORTANT
             } else {
-                alert("Error saving artwork.");
+                alert('Save failed');
             }
         });
     });
 });
 
-// Function to load gallery items
+
 function loadGallery() {
     fetch('loadgallery.php')
         .then(res => res.json())
         .then(data => {
-            if (!data.success) {
-                console.error(data.message);
-                return;
-            }
+            if (!data.success) return;
 
-            const galleryContainer = document.querySelector(".gallery-container");
-            galleryContainer.innerHTML = "";
+            const container = document.querySelector('.gallery-container');
+            container.innerHTML = '';
 
-            data.artworks.forEach(item => {
-                const img = document.createElement("img");
-                img.src = item.image_data;
-                img.alt = item.art_name;
-                img.classList.add("gallery-item");
-                galleryContainer.appendChild(img);
+            data.artworks.forEach(art => {
+                const div = document.createElement('div');
+                div.className = 'gallery-item';
+
+                div.innerHTML = `
+                    <h3>${art.art_name}</h3>
+                    <img src="${art.image_data}" />
+                `;
+
+                container.appendChild(div);
             });
         });
 }
 
-window.addEventListener("load", loadGallery);
+document.addEventListener('DOMContentLoaded', loadGallery);
+
 
 
