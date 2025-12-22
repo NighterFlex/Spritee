@@ -100,3 +100,60 @@ downloadBtn.addEventListener("click", function() {
         alert("Your pixel art has been saved!");
     });
 });
+
+//gallery functionality
+const saveGalleryBtn = document.getElementById("save-btn");
+
+saveGalleryBtn.addEventListener("click", function() {
+    html2canvas(containerPanel).then(canvas => {
+        const image_data = canvas.toDataURL("image/png");
+        const art_name = prompt("Enter a name for your artwork:", "Untitled");
+        if (art_name === null) {
+            return; // user cancelled the prompt
+        }
+        // Send the image data and art name to the server
+        fetch('savegallery.php', {
+            method: 'POST',
+            body: JSON.stringify({
+                image: image_data,
+                name: art_name
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                alert("Artwork saved to gallery!");
+            } else {
+                alert("Error saving artwork.");
+            }
+        });
+    });
+});
+
+// Function to load gallery items
+function loadGallery() {
+    fetch('loadgallery.php')
+        .then(res => res.json())
+        .then(data => {
+            if (!data.success) {
+                console.error(data.message);
+                return;
+            }
+
+            const galleryContainer = document.querySelector(".gallery-container");
+            galleryContainer.innerHTML = "";
+
+            data.artworks.forEach(item => {
+                const img = document.createElement("img");
+                img.src = item.image_data;
+                img.alt = item.art_name;
+                img.classList.add("gallery-item");
+                galleryContainer.appendChild(img);
+            });
+        });
+}
+
+window.addEventListener("load", loadGallery);
+
+

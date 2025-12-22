@@ -8,3 +8,14 @@ CREATE TABLE registration (
     password VARCHAR(20) NOT NULL,
     country VARCHAR(50)
 );
+
+
+
+CREATE TABLE gallery(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    art_name VARCHAR(100) DEFAULT 'UNTITLED',
+    image_data MEDIUMTEXT NOT NULL,   #base64
+    CREATED_AT TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES registration(id) ON DELETE CASCADE
+);

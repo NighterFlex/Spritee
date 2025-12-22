@@ -11,11 +11,11 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
-html, body {
+
         /* to fix scrollbar issue */
-    overflow-x: hidden;
-    overflow-y: hidden;  
-}
+    /* overflow-x: hidden; */
+    /* overflow-y: hidden;   */
+
 
 body{
     /* font-family: 'PixelFont', sans-serif; */

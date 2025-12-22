@@ -72,7 +72,7 @@ session_start();
                 <button id="eraser-btn" class="tool-btn">🗑 Eraser</button>
             </div>
             <button id="reset-btn" class="btn">⟳ Reset</button>
-            <input type="color" value="#fffff" class="color-picker">
+            <input type="color" value="#ffffff" class="color-picker">
             <input type="number" value="20" class="size">
         </div>
         <div class="container-panel">
@@ -91,6 +91,14 @@ session_start();
 
 
     </div>
+
+    <div class="gallery">
+        <h1 id="gallery-heading">Gallery</h1>
+        <div class="gallery-container">
+            <!--gallery items will be dynamically added idhar -->
+        </div>
+    </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="script.js"></script>
@@ -127,6 +135,8 @@ session_start();
             }
         });
     </script>
+
+    
 
 </body>
 
