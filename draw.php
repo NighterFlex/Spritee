@@ -86,16 +86,20 @@ session_start();
             <h1 id="actions-heading">Actions</h1>
             <button class="btn" id="download-btn">⬇ Download</button>
             <button class="btn" id="save-btn">⎙ Save</button>
-            <a href="gallery.html" target="_blank" class="btn">[◉°] Gallery</a>
+            <button class="btn" id="gallery-btn">[◉°] Gallery</button>
         </div>
 
 
     </div>
-
-    <div class="gallery">
-        <h1 id="gallery-heading">Gallery</h1>
-        <div class="gallery-container">
-            <!--gallery items will be dynamically added idhar -->
+    <div class="galldiv">
+        <div class="gallery">
+            <h1 id="gallery-heading">GALLERY</h1>
+            <p id="empty-gallery" style="display:none; text-align:center;">
+                Save art to see!
+            </p>
+            <div class="gallery-container">
+                <!--gallery items will be dynamically added here -->
+            </div>
         </div>
     </div>
 
@@ -134,9 +138,21 @@ session_start();
                 });
             }
         });
+
+        // move to see gallery
+        const galleryBtn = document.getElementById('gallery-btn');
+        const galldiv = document.querySelector('.galldiv');
+
+        if (galleryBtn && galldiv) {
+            galleryBtn.addEventListener('click', () => {
+                galldiv.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        }
     </script>
 
-    
+
 
 </body>
 

@@ -105,12 +105,16 @@ downloadBtn.addEventListener("click", function() {
 document.getElementById('save-btn').addEventListener('click', () => {
     html2canvas(document.querySelector('.container')).then(canvas => {
         const imageData = canvas.toDataURL('image/png');
-
+        const artname = prompt("Enter art name:", "MY Art");
+        if (artname === "") {
+            alert("Can't save the art. Enter art name to save!❌");
+            return; // user cancelled the prompt
+        }
         fetch('savegallery.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                art_name: 'My Art',
+                art_name: artname,
                 image_data: imageData
             })
         })
@@ -134,15 +138,24 @@ function loadGallery() {
             if (!data.success) return;
 
             const container = document.querySelector('.gallery-container');
+            const emptyMsg = document.getElementById('empty-gallery');
+
             container.innerHTML = '';
 
+            if (!data.success || data.artworks.length === 0) {
+                emptyMsg.style.display = 'block';
+                return;
+            }
+
+            emptyMsg.style.display = 'none';
+            
             data.artworks.forEach(art => {
                 const div = document.createElement('div');
                 div.className = 'gallery-item';
 
                 div.innerHTML = `
-                    <h3>${art.art_name}</h3>
-                    <img src="${art.image_data}" />
+                <img src="${art.image_data}" />
+                <h3>${art.art_name}</h3>
                 `;
 
                 container.appendChild(div);
