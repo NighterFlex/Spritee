@@ -124,26 +124,37 @@ body {
 }
 
 /* DRAW BUTTON */
-.draw-btn {
+.draw-btn{
     position: absolute;
-    top: 45%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #ea7226;
-    padding: 5px;
+    text-align: center;
+    border: 3px solid #ea7226;
     border-radius: 10px;
+    background-color: #ea7226;
+    box-shadow:  2px 2px #ea7226;
 }
 
-.draw-btn button {
+.draw-btn:hover{
+    border: 2px solid #ea7226;
+    box-shadow: 5px 5px #ea7226;
+}
+
+.draw-btn button{
     font-family: 'PixelFont', sans-serif;
+    font-weight: bold;
     padding: 15px 30px;
     font-size: 24px;
-    border: none;
-    border-radius: 8px;
-    background: #ffc001;
     color: white;
+    background-color: #ffc001;
+    border: none;
     cursor: pointer;
+    border-radius: 10px;
+    
 }
+
+
 
 /* AUTH BUTTONS */
 .auth-btns {
@@ -164,8 +175,18 @@ body {
 }
 
 .auth.register {
-    background: white;
-    color: #ea7226;
+    
+    background-color: white;
+    color: #ea7226
+}
+.auth.login {
+    color: white;
+    background-color: #ffc001;
+}
+
+.auth:hover {
+    border: 2px solid #ea7226;
+    box-shadow: 5px 5px #ea7226;
 }
 
 /* FOOTER */
