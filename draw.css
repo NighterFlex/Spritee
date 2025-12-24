@@ -425,14 +425,38 @@ body {
     justify-items: center;
 }
 
-.gallery-item img {
+
+.gallery-item .gallery-image {
     width: 200px;
-    border: 2px solid #fff;
+    border: 2px solid #ffffff;
     margin-bottom: 10px;
+    /* opacity:1.0;
+    filter:alpha(opacity=100);  */
 }
 .gallery-item img:hover {
     transform: scale(1.1);
     transition: transform 0.2s ease;
+    
+    filter: brightness(0.3);
+}
+
+.gallery-item {
+    position: relative; /* so the delete icon is positioned relative to this div */
+    display: inline-block;
+}
+
+.delete-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20%;
+    height: 20%;
+    cursor: pointer;
+    display: none; /* hide by default */
+}
+
+.gallery-item:hover .delete-icon {
+    display: flex; /* show when hovering the item */
 }
 
 .gallery-item h3 {

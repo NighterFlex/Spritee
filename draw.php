@@ -72,7 +72,7 @@ session_start();
                 <button id="eraser-btn" class="tool-btn">🗑 Eraser</button>
             </div>
             <button id="reset-btn" class="btn">⟳ Reset</button>
-            <input type="color" value="#ffffff" class="color-picker">
+            <input type="color" value="#000000" class="color-picker">
             <input type="number" value="20" class="size">
         </div>
         <div class="container-panel">
@@ -99,7 +99,6 @@ session_start();
             </p>
             <div class="gallery-container">
                 <!--gallery items will be dynamically added here -->
-            </div>
         </div>
     </div>
 

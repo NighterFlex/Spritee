@@ -105,9 +105,9 @@ downloadBtn.addEventListener("click", function() {
 document.getElementById('save-btn').addEventListener('click', () => {
     html2canvas(document.querySelector('.container')).then(canvas => {
         const imageData = canvas.toDataURL('image/png');
-        const artname = prompt("Enter art name:", "MY Art");
+        const artname = prompt("Enter art name:", "My Art");
         if (artname === "") {
-            alert("Can't save the art. Enter art name to save!❌");
+            alert("Can't save the art. Enter art name to save!");
             return; // user cancelled the prompt
         }
         fetch('savegallery.php', {
@@ -154,15 +154,43 @@ function loadGallery() {
                 div.className = 'gallery-item';
 
                 div.innerHTML = `
-                <img src="${art.image_data}" />
+                <img src="${art.image_data}" class="gallery-image" />
                 <h3>${art.art_name}</h3>
-                `;
+                <img src="images/delete.png" alt="delete icon" title="Delete" class="delete-icon">
+                `;  
+
+                //to delete artwork
+                div.querySelector('.delete-icon').addEventListener('click', () => {
+                    deleteArtwork(art.id);
+                });
 
                 container.appendChild(div);
             });
+            
         });
 }
 
+function deleteArtwork(artworkId){
+    if(!confirm("Are you sure you want to delete this artwork? :0"))
+        return;
+
+    fetch('deletegallery.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: artworkId })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.success){
+            alert('Artwork deleted! YAY');
+            loadGallery(); // refreshthe gallery
+        } else {
+            alert('Delete failed');
+        }
+    });
+
+
+}
 document.addEventListener('DOMContentLoaded', loadGallery);
 
 
