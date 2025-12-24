@@ -15,92 +15,93 @@ session_start();
 <canvas id="export-canvas" style="display:none;"></canvas>
 
 <body>
-    <div class="navbar">
-        <a href="index.php">
-            <img src="images/image.png" alt="logo" class="logo">
-        </a>
+    <div class="overlay"> </div>
+        <div class="navbar">
+            <a href="index.php">
+                <img src="images/image.png" alt="logo" class="logo">
+            </a>
 
-        <nav class="nav1">
-            <ul class="nav">
+            <nav class="nav1">
+                <ul class="nav">
 
-                <a href="index.php">
-                    <li>Home</li>
-                </a>
-                <?php if (isset($_SESSION['logged_in'])): ?>
-                    <a href="draw.php">
-                        <li>Draw</li>
+                    <a href="index.php">
+                        <li>Home</li>
                     </a>
-                <?php else: ?>
-                    <a href="signin.php" id="navDraw">
-                        <li>Draw</li>
+                    <?php if (isset($_SESSION['logged_in'])): ?>
+                        <a href="draw.php">
+                            <li>Draw</li>
+                        </a>
+                    <?php else: ?>
+                        <a href="signin.php" id="navDraw">
+                            <li>Draw</li>
+                        </a>
+                    <?php endif; ?>
+
+                    <a href="https://github.com/NighterFlex/Spritee" target="_blank">
+                        <li>Github</li>
                     </a>
-                <?php endif; ?>
 
-                <a href="https://github.com/NighterFlex/Spritee" target="_blank">
-                    <li>Github</li>
-                </a>
+                    <!-- LOGIN / USER MENU -->
+                    <?php if (isset($_SESSION['logged_in'])): ?>
+                        <li class="user-menu">
+                            <span class="username">
+                                <?php echo htmlspecialchars($_SESSION['username']); ?>
+                            </span>
 
-                <!-- LOGIN / USER MENU -->
-                <?php if (isset($_SESSION['logged_in'])): ?>
-                    <li class="user-menu">
-                        <span class="username">
-                            <?php echo htmlspecialchars($_SESSION['username']); ?>
-                        </span>
+                            <div class="dropdown">
+                                <!-- <a href="#">Extra Button</a> -->
+                                <a href="logout.php">Logout</a>
+                            </div>
+                        </li>
+                    <?php else: ?>
+                        <a href="signin.php">
+                            <li>Login</li>
+                        </a>
+                    <?php endif; ?>
 
-                        <div class="dropdown">
-                            <!-- <a href="#">Extra Button</a> -->
-                            <a href="logout.php">Logout</a>
-                        </div>
-                    </li>
-                <?php else: ?>
-                    <a href="signin.php">
-                        <li>Login</li>
-                    </a>
-                <?php endif; ?>
-
-            </ul>
-        </nav>
-    </div>
+                </ul>
+            </nav>
+        </div>
 
 
 
-    <div class="panel">
-        <div class="tools">
-            <h1 id="tools-heading">Tools</h1>
-            <div class="tools-grid">
-                <button id="pen-btn" class="tool-btn active">✎ Pen</button>
-                <button id="eraser-btn" class="tool-btn">🗑 Eraser</button>
+        <div class="panel">
+            <div class="tools">
+                <h1 id="tools-heading">Tools</h1>
+                <div class="tools-grid">
+                    <button id="pen-btn" class="tool-btn active">✎ Pen</button>
+                    <button id="eraser-btn" class="tool-btn">🗑 Eraser</button>
+                </div>
+                <button id="reset-btn" class="btn">⟳ Reset</button>
+                <input type="color" value="#000000" class="color-picker">
+                <input type="number" value="20" class="size">
             </div>
-            <button id="reset-btn" class="btn">⟳ Reset</button>
-            <input type="color" value="#000000" class="color-picker">
-            <input type="number" value="20" class="size">
+            <div class="container-panel">
+                <div class="container">
+                    <!-- <div class="box"></div>
+                <div class="box"></div> -->
+                </div>
+            </div>
+
+            <div class="actions">
+                <h1 id="actions-heading">Actions</h1>
+                <button class="btn" id="download-btn">⬇ Download</button>
+                <button class="btn" id="save-btn">⎙ Save</button>
+                <button class="btn" id="gallery-btn">[◉°] Gallery</button>
+            </div>
+
+
         </div>
-        <div class="container-panel">
-            <div class="container">
-                <!-- <div class="box"></div>
-            <div class="box"></div> -->
+        <div class="galldiv">
+            <div class="gallery">
+                <h1 id="gallery-heading">GALLERY</h1>
+                <p id="empty-gallery" style="display:none; text-align:center;">
+                    Save art to see!
+                </p>
+                <div class="gallery-container">
+                    <!--gallery items will be dynamically added here -->
             </div>
         </div>
-
-        <div class="actions">
-            <h1 id="actions-heading">Actions</h1>
-            <button class="btn" id="download-btn">⬇ Download</button>
-            <button class="btn" id="save-btn">⎙ Save</button>
-            <button class="btn" id="gallery-btn">[◉°] Gallery</button>
-        </div>
-
-
-    </div>
-    <div class="galldiv">
-        <div class="gallery">
-            <h1 id="gallery-heading">GALLERY</h1>
-            <p id="empty-gallery" style="display:none; text-align:center;">
-                Save art to see!
-            </p>
-            <div class="gallery-container">
-                <!--gallery items will be dynamically added here -->
-        </div>
-    </div>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>

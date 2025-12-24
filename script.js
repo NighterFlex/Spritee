@@ -158,6 +158,10 @@ function loadGallery() {
                 <h3>${art.art_name}</h3>
                 <img src="images/delete.png" alt="delete icon" title="Delete" class="delete-icon">
                 `;  
+                
+                //for the overlay
+                // const image = div.querySelector('.gallery-image');
+                // attachOverlayToImage(image);
 
                 //to delete artwork
                 div.querySelector('.delete-icon').addEventListener('click', () => {
@@ -166,7 +170,7 @@ function loadGallery() {
 
                 container.appendChild(div);
             });
-            
+
         });
 }
 
@@ -192,6 +196,15 @@ function deleteArtwork(artworkId){
 
 }
 document.addEventListener('DOMContentLoaded', loadGallery);
+
+
+//close overly btton functionality----
+
+// const closeOverlayButton = document.createElement('button');
+// closeOverlayButton.id = 'close-overlay-btn';
+// closeOverlayButton.innerHTML = 'X';
+
+// document.body.appendChild(closeOverlayButton);
 
 
 
