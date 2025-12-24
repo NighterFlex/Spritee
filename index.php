@@ -88,7 +88,7 @@ session_start();
     <footer>
         <p id="welcome-paragraph">Welcome to <b id="msg-spritee">SpRITEE</b>! Probably the most fun and intriguing websites out there. What's it about? Welllll, It's just a little pixel-art maker! A place where one can draw ANYTHING pixelated. I tried to keep it as interactive as possible. Hope you enjoy!!!! :3</p>
         </p>
-        <p id="copyright">© 2024 Spritee. All rights reserved.</p>
+        <p id="copyright">© 2025 Spritee. All rights reserved.</p>
     </footer>
 
     <script>
