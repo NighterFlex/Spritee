@@ -101,8 +101,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['log-btn']) ){
 
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -115,7 +113,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['log-btn']) ){
 
 <body>
         <a href="index.php">
-            <img src="images/image.png" alt="logo" class="logo" style="height: 60px; margin: 10px 0;">
+            <img src="images/image.png" alt="logo" class="logo" style="height: 60px; margin: 10px 0; ">
         </a>
     </div>
     <div class="page">

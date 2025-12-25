@@ -69,10 +69,10 @@ session_start();
             <div class="tools">
                 <h1 id="tools-heading">Tools</h1>
                 <div class="tools-grid">
-                    <button id="pen-btn" class="tool-btn active">✎ Pen</button>
-                    <button id="eraser-btn" class="tool-btn">🗑 Eraser</button>
+                    <button id="pen-btn" class="tool-btn active" onclick="clickSound.play()">✎ Pen</button>
+                    <button id="eraser-btn" class="tool-btn" onclick="clickSound.play()">🗑 Eraser</button>
                 </div>
-                <button id="reset-btn" class="btn">⟳ Reset</button>
+                <button id="reset-btn" class="btn" onclick="clickSound.play()">⟳ Reset</button>
                 <input type="color" value="#000000" class="color-picker">
                 <input type="number" value="20" class="size">
             </div>
@@ -85,9 +85,9 @@ session_start();
 
             <div class="actions">
                 <h1 id="actions-heading">Actions</h1>
-                <button class="btn" id="download-btn">⬇ Download</button>
-                <button class="btn" id="save-btn">⎙ Save</button>
-                <button class="btn" id="gallery-btn">[◉°] Gallery</button>
+                <button class="btn" id="download-btn" onclick="clickSound.play()">⬇ Download</button>
+                <button class="btn" id="save-btn" onclick="clickSound.play()">⎙ Save</button>
+                <button class="btn" id="gallery-btn" onclick="clickSound.play()">[◉°] Gallery</button>
             </div>
 
 
@@ -151,7 +151,7 @@ session_start();
             });
         }
     </script>
-
+ <script src="audio.js"></script>
 
 
 </body>

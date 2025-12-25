@@ -247,7 +247,7 @@ body {
     font-size: 20px;
     border-radius: 7px;
     border: 2px solid rgb(187, 180, 180);
-}
+}   
 
 .container {
     --size: 4;
@@ -436,7 +436,7 @@ body {
 .gallery-item img:hover {
     transform: scale(1.1);
     transition: transform 0.2s ease;
-    cursor: zoom-in;
+    cursor: pointer;
     
     filter: brightness(0.3);
 }
@@ -456,8 +456,21 @@ body {
     display: none; /* hide by default */
 }
 
+.download-icon {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 22%;
+    height: 20%;
+    cursor: pointer;
+    display: none; 
+}
+
 .gallery-item:hover .delete-icon {
     display: flex; /* show when hovering the item */
+}
+.gallery-item:hover .download-icon {
+    display: flex; 
 }
 
 .gallery-item h3 {

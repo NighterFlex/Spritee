@@ -70,9 +70,9 @@ session_start();
 
     <div class="draw-btn">
         <?php if (isset($_SESSION['logged_in'])): ?>
-            <a href="draw.php"><button>DRAW</button></a>
+            <a href="draw.php"><button onclick="clickSound.play()">DRAW</button></a>
         <?php else: ?>
-            <a href="signin.php"><button id="drawBtn">DRAW</button></a>
+            <a href="signin.php"><button id="drawBtn" onclick="clickSound.play()">DRAW</button></a>
         <?php endif; ?>
     </div>
 
@@ -80,13 +80,13 @@ session_start();
     <!-- AUTH BUTTONS (HIDE WHEN LOGGED IN) -->
     <?php if (!isset($_SESSION['logged_in'])): ?>
         <div class="auth-btns">
-            <a href="signin.php"><button class="auth login">LOGIN</button></a>
-            <a href="signin.php"><button class="auth register">REGISTER</button></a>
+            <!-- <a href="signin.php"><button class="auth login">LOGIN</button></a> -->
+            <a href="signin.php"><button class="auth register" onclick="clickSound.play()">LOGIN/REGISTER</button></a>
         </div>
     <?php endif; ?>
 
     <footer>
-        <p id="welcome-paragraph">Welcome to <b id="msg-spritee">SpRITEE</b>! Probably the most fun and intriguing websites out there. What's it about? Welllll, It's just a little pixel-art maker! A place where one can draw ANYTHING pixelated. We tried to keep it as interactive as possible. Hope you enjoy! :3</p>
+        <p id="welcome-paragraph">Welcome to <b id="msg-spritee" onho>SpRITEE</b>! Probably the most fun and intriguing websites out there. What's it about? Welllll, It's just a little pixel-art maker! A place where one can draw ANYTHING pixelated. We tried to keep it as interactive as possible. Hope you enjoy! :3</p>
         </p>
         <p id="copyright">© 2025 Spritee. All rights reserved.</p>
     </footer>
@@ -133,6 +133,9 @@ session_start();
     });
     </script>
     <script src="home.js"></script>
+
+    <!-- for audio -->
+     <script src="audio.js"></script>
 
 </body>
 

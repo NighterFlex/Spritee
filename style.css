@@ -211,16 +211,15 @@ body{
     background-color: white;
     color: #ea7226
 }
-.auth.login {
+/* .auth.login {
     color: white;
     background-color: #ffc001;
-}
+} */
 
 .auth:hover {
     border: 2px solid #ea7226;
     box-shadow: 5px 5px #ea7226;
 }
-
 
 footer {
     margin-top: 20px;
