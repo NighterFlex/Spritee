@@ -16,11 +16,14 @@ session_start();
 
 <body>
     <div class="overlay"> </div>
-        <div class="navbar">
-            <a href="index.php">
-                <img src="images/image.png" alt="logo" class="logo">
-            </a>
+    <div class="navbar">
+        <a href="index.php">
+            <img src="images/image.png" alt="logo" class="logo">
+        </a>
 
+        <img id="menubar" src="images/menubar.png" alt="">
+        <div class="navback">
+            <img id="crossicon" src="images/cross.png" alt="">
             <nav class="nav1">
                 <ul class="nav">
 
@@ -62,96 +65,121 @@ session_start();
                 </ul>
             </nav>
         </div>
+    </div>
 
 
 
-        <div class="panel">
-            <div class="tools">
-                <h1 id="tools-heading">Tools</h1>
-                <div class="tools-grid">
-                    <button id="pen-btn" class="tool-btn active" onclick="clickSound.play()">✎ Pen</button>
-                    <button id="eraser-btn" class="tool-btn" onclick="clickSound.play()">🗑 Eraser</button>
-                </div>
-                <button id="reset-btn" class="btn" onclick="clickSound.play()">⟳ Reset</button>
-                <input type="color" value="#000000" class="color-picker">
-                <input type="number" value="20" class="size">
+    <div class="panel">
+        <div class="tools">
+            <h1 id="tools-heading">Tools</h1>
+            <div class="tools-grid">
+                <button id="pen-btn" class="tool-btn active" onclick="clickSound.play()">✎ Pen</button>
+                <button id="eraser-btn" class="tool-btn" onclick="clickSound.play()">🗑 Eraser</button>
             </div>
-            <div class="container-panel">
-                <div class="container">
-                    <!-- <div class="box"></div>
+            <button id="reset-btn" class="btn" onclick="clickSound.play()">⟳ Reset</button>
+            <input type="color" value="#000000" class="color-picker">
+            <input type="number" value="20" class="size">
+        </div>
+        <div class="container-panel">
+            <div class="container">
+                <!-- <div class="box"></div>
                 <div class="box"></div> -->
-                </div>
-            </div>
-
-            <div class="actions">
-                <h1 id="actions-heading">Actions</h1>
-                <button class="btn" id="download-btn" onclick="clickSound.play()">⬇ Download</button>
-                <button class="btn" id="save-btn" onclick="clickSound.play()">⎙ Save</button>
-                <button class="btn" id="gallery-btn" onclick="clickSound.play()">[◉°] Gallery</button>
-            </div>
-
-
-        </div>
-        <div class="galldiv">
-            <div class="gallery">
-                <h1 id="gallery-heading">GALLERY</h1>
-                <p id="empty-gallery" style="display:none; text-align:center;">
-                    Save art to see!
-                </p>
-                <div class="gallery-container">
-                    <!--gallery items will be dynamically added here -->
             </div>
         </div>
 
+        <div class="actions">
+            <h1 id="actions-heading">Actions</h1>
+            <button class="btn" id="download-btn" onclick="clickSound.play()">⬇ Download</button>
+            <button class="btn" id="save-btn" onclick="clickSound.play()">⎙ Save</button>
+            <button class="btn" id="gallery-btn" onclick="clickSound.play()">[◉°] Gallery</button>
+        </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="script.js"></script>
 
-    <script>
-        //alert shown when navdraw is click
-        <?php if (!isset($_SESSION['logged_in'])): ?>
-            const navDraw = document.getElementById('navDraw');
+    </div>
+    <div class="galldiv">
+        <div class="gallery">
+            <h1 id="gallery-heading">GALLERY</h1>
+            <p id="empty-gallery" style="display:none; text-align:center;">
+                Save art to see!
+            </p>
+            <div class="gallery-container">
+                <!--gallery items will be dynamically added here -->
+            </div>
+        </div>
 
-            if (navDraw) {
-                navDraw.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    alert('Sign in to draw!');
-                    window.location.href = 'signin.php';
-                });
-            }
-        <?php endif; ?>
 
-        // dropmenu shown
-        document.addEventListener('DOMContentLoaded', () => {
-            const userMenu = document.querySelector('.user-menu');
-            const dropdown = document.querySelector('.user-menu .dropdown');
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <script src="script.js"></script>
 
-            if (userMenu) {
-                userMenu.addEventListener('click', (e) => {
-                    e.stopPropagation(); // prevent click from closing immediately
-                    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-                });
+        <script>
+            //alert shown when navdraw is click
+            <?php if (!isset($_SESSION['logged_in'])): ?>
+                const navDraw = document.getElementById('navDraw');
 
-                // Close dropdown if clicking outside
-                document.addEventListener('click', () => {
-                    dropdown.style.display = 'none';
-                });
-            }
-        });
+                if (navDraw) {
+                    navDraw.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        alert('Sign in to draw!');
+                        window.location.href = 'signin.php';
+                    });
+                }
+            <?php endif; ?>
 
-        // move to see gallery
-        const galleryBtn = document.getElementById('gallery-btn');
-        const galldiv = document.querySelector('.galldiv');
+            // dropmenu shown
+            document.addEventListener('DOMContentLoaded', () => {
+                const userMenu = document.querySelector('.user-menu');
+                const dropdown = document.querySelector('.user-menu .dropdown');
 
-        if (galleryBtn && galldiv) {
-            galleryBtn.addEventListener('click', () => {
-                galldiv.scrollIntoView({
-                    behavior: 'smooth'
-                });
+                if (userMenu) {
+                    userMenu.addEventListener('click', (e) => {
+                        e.stopPropagation(); // prevent click from closing immediately
+                        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                    });
+
+                    // Close dropdown if clicking outside
+                    document.addEventListener('click', () => {
+                        dropdown.style.display = 'none';
+                    });
+                }
             });
-        }
-    </script>
- <script src="audio.js"></script>
+
+            // move to see gallery
+            const galleryBtn = document.getElementById('gallery-btn');
+            const galldiv = document.querySelector('.galldiv');
+
+            if (galleryBtn && galldiv) {
+                galleryBtn.addEventListener('click', () => {
+                    galldiv.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Mobile menu functionality for draw.php
+const menuicon = document.getElementById("menubar");
+const cross = document.getElementById("crossicon");
+const navbk = document.querySelector(".navback");
+
+// In case some pages don't have these elements
+if (menuicon && cross && navbk) {
+    menuicon.addEventListener("click", function () {
+        navbk.style.right = "0px";
+    });
+    
+    cross.addEventListener("click", function () {
+        navbk.style.right = "-200px";
+    });
+
+    // Close menu when clicking on nav links
+    const navLinks = document.querySelectorAll(".nav a");
+    navLinks.forEach(link => {
+        link.addEventListener("click", function() {
+            navbk.style.right = "-200px";
+        });
+    });
+}
+        </script>
+        <script src="audio.js"></script>
 
 
 </body>

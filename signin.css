@@ -160,3 +160,470 @@ body {
     margin-bottom: 30px;
     align-self: center;
 }
+
+/* Responsive Design for Login/Register Page */
+
+/* Large Tablets and Small Desktops (901px to 1200px) */
+@media (max-width: 1200px) {
+    .card {
+        width: 450px;
+        height: 450px;
+    }
+    
+    .logo {
+        margin-top: 35px;
+    }
+    
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="password"],
+    .field select {
+        width: 280px;
+        font-size: 1.05rem;
+    }
+    
+    .left-section {
+        max-width: 280px;
+    }
+    
+    .main-btn {
+        width: 110px;
+        height: 33px;
+    }
+    
+    .link-btn {
+        font-size: 0.8rem;
+        margin-bottom: 25px;
+    }
+}
+
+/* Tablets (769px to 900px) */
+@media (max-width: 900px) {
+    .card {
+        width: 400px;
+        height: 400px;
+        perspective: 1000px;
+    }
+    
+    .logo {
+        margin-top: 30px;
+        font-size: 1.8rem;
+    }
+    
+    .form {
+        margin-top: 15px;
+        gap: 15px;
+    }
+    
+    .loginput {
+        margin-top: 30px;
+        gap: 30px;
+    }
+    
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="password"],
+    .field select {
+        width: 260px;
+        font-size: 1rem;
+        padding: 3px 2px 1px;
+        border-bottom: 2px solid rgb(82, 117, 90);
+    }
+    
+    .left-section {
+        max-width: 260px;
+        gap: 10px;
+    }
+    
+    .field-inline {
+        font-size: 0.85rem;
+    }
+    
+    .main-btn {
+        width: 100px;
+        height: 30px;
+        margin-top: 15px;
+        font-size: 0.9rem;
+    }
+    
+    .link-btn {
+        font-size: 0.75rem;
+        margin-bottom: 20px;
+    }
+}
+
+/* Mobile Landscape and Small Tablets (601px to 768px) */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+    
+    .card {
+        width: 380px;
+        height: 380px;
+        perspective: 800px;
+    }
+    
+    .logo {
+        margin-top: 25px;
+        font-size: 1.7rem;
+    }
+    
+    .loginput {
+        margin-top: 25px;
+        gap: 25px;
+    }
+    
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="password"],
+    .field select {
+        width: 240px;
+        font-size: 0.95rem;
+        padding: 3px 1px 1px;
+    }
+    
+    .left-section {
+        max-width: 240px;
+    }
+    
+    .main-btn {
+        width: 95px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+    
+    .link-btn {
+        font-size: 0.7rem;
+        margin-bottom: 15px;
+    }
+    
+    .card-inner {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+    }
+}
+
+/* Mobile Portrait (481px to 600px) */
+@media (max-width: 600px) {
+    .page {
+        padding: 15px;
+        align-items: flex-start;
+        margin-top: 30px;
+    }
+    
+    .card {
+        width: 340px;
+        height: 360px;
+        perspective: 700px;
+    }
+    
+    .logo {
+        margin-top: 20px;
+        font-size: 1.6rem;
+    }
+    
+    .form {
+        margin-top: 10px;
+        gap: 12px;
+    }
+    
+    .loginput {
+        margin-top: 20px;
+        gap: 20px;
+    }
+    
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="password"],
+    .field select {
+        width: 220px;
+        font-size: 0.9rem;
+        padding: 2px 1px 1px;
+        border-bottom: 1.5px solid rgb(82, 117, 90);
+    }
+    
+    .left-section {
+        max-width: 220px;
+        gap: 8px;
+    }
+    
+    .field-inline {
+        font-size: 0.8rem;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    
+    .main-btn {
+        width: 90px;
+        height: 26px;
+        margin-top: 12px;
+        font-size: 0.8rem;
+    }
+    
+    .link-btn {
+        font-size: 0.65rem;
+        margin-bottom: 12px;
+    }
+    
+    .card-inner {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* Small Mobile (320px to 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .page {
+        margin-top: 20px;
+    }
+    
+    .card {
+        width: 300px;
+        height: 340px;
+        perspective: 600px;
+    }
+    
+    .logo {
+        margin-top: 15px;
+        font-size: 1.5rem;
+    }
+    
+    .form {
+        margin-top: 8px;
+        gap: 10px;
+    }
+    
+    .loginput {
+        margin-top: 15px;
+        gap: 15px;
+    }
+    
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="password"],
+    .field select {
+        width: 200px;
+        font-size: 0.85rem;
+        padding: 2px 0 1px;
+        border-bottom: 1px solid rgb(82, 117, 90);
+    }
+    
+    .left-section {
+        max-width: 200px;
+        gap: 6px;
+    }
+    
+    .field-inline {
+        font-size: 0.75rem;
+        gap: 4px;
+    }
+    
+    .main-btn {
+        width: 85px;
+        height: 24px;
+        margin-top: 10px;
+        font-size: 0.75rem;
+    }
+    
+    .link-btn {
+        font-size: 0.6rem;
+        margin-bottom: 10px;
+    }
+    
+    .card-inner {
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Very Small Mobile (under 320px) */
+@media (max-width: 320px) {
+    .card {
+        width: 280px;
+        height: 320px;
+        perspective: 500px;
+    }
+    
+    .logo {
+        margin-top: 12px;
+        font-size: 1.4rem;
+    }
+    
+    .loginput {
+        margin-top: 12px;
+        gap: 12px;
+    }
+    
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="password"],
+    .field select {
+        width: 180px;
+        font-size: 0.8rem;
+    }
+    
+    .left-section {
+        max-width: 180px;
+    }
+    
+    .field-inline {
+        font-size: 0.7rem;
+    }
+    
+    .main-btn {
+        width: 80px;
+        height: 22px;
+        font-size: 0.7rem;
+    }
+    
+    .link-btn {
+        font-size: 0.55rem;
+    }
+}
+
+/* For landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .page {
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+    
+    .card {
+        width: 320px;
+        height: 280px;
+        margin: 10px auto;
+    }
+    
+    .logo {
+        margin-top: 10px;
+        font-size: 1.4rem;
+    }
+    
+    .form {
+        margin-top: 5px;
+        gap: 8px;
+    }
+    
+    .loginput {
+        margin-top: 10px;
+        gap: 10px;
+    }
+    
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="password"],
+    .field select {
+        width: 180px;
+        font-size: 0.8rem;
+    }
+    
+    .left-section {
+        max-width: 180px;
+    }
+    
+    .main-btn {
+        margin-top: 8px;
+    }
+}
+
+/* For tall mobile screens */
+@media (max-height: 700px) and (min-width: 481px) {
+    .page {
+        margin-top: 20px;
+    }
+    
+    .card {
+        margin: 20px auto;
+    }
+}
+
+/* Smooth transitions for all interactive elements */
+.card-inner {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn {
+    transition: all 0.3s ease;
+}
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="password"],
+.field select {
+    transition: all 0.3s ease;
+}
+
+/* Focus states */
+.field input[type="text"]:focus,
+.field input[type="email"]:focus,
+.field input[type="password"]:focus,
+.field select:focus {
+    border-bottom-color: rgb(52, 75, 58);
+    box-shadow: 0 2px 0 0 rgb(52, 75, 58);
+}
+
+/* Hover effects for links */
+.link-btn:hover {
+    color: rgb(52, 75, 58);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Beautiful card shadow on hover */
+.card-inner:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* Custom scrollbar for select dropdown */
+.field select {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(82, 117, 90) #f1f1f1;
+}
+
+/* Animation for form elements */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.field {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Stagger animations for form fields */
+.field:nth-child(1) { animation-delay: 0.1s; }
+.field:nth-child(2) { animation-delay: 0.2s; }
+.field:nth-child(3) { animation-delay: 0.3s; }
+.field:nth-child(4) { animation-delay: 0.4s; }
+.field:nth-child(5) { animation-delay: 0.5s; }
+.left-section { animation-delay: 0.6s; }
+.link-btn { animation-delay: 0.7s; }
+
+/* Responsive logo in header */
+body > a > img.logo {
+    height: 50px !important;
+    margin: 8px 0 !important;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 480px) {
+    body > a > img.logo {
+        height: 40px !important;
+        margin: 6px 0 !important;
+    }
+}
+
+@media (max-width: 320px) {
+    body > a > img.logo {
+        height: 35px !important;
+        margin: 5px 0 !important;
+    }
+}
